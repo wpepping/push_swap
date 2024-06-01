@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:35:01 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/01 17:21:28 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:51:39 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || !read_input(argc, argv, &stack_a))
 		return (0);
 	new_stack(&stack_b, NULL, NULL);
+	print_list(stack_a.top);
 	while (stack_a.size > 3 && !is_sorted(&stack_a))
 	{
 		do_move(&stack_a, &stack_b, find_next_move(&stack_a, &stack_b, &move));

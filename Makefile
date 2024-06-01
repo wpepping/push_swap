@@ -23,7 +23,7 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(LIBFT_FOLDER)\$(LIBFT)
+	rm -f $(LIBFT_FOLDER)/$(LIBFT)
 	rm -f $(NAME)
 
 re: fclean all
