@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:40:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/01 18:59:29 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/02 16:18:20 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,24 @@ void	do_move(t_stack *stack_a, t_stack *stack_b, t_move *mv)
 void	merge(t_stack *stack_a, t_stack *stack_b)
 {
 	int	rotates;
-	int	max_a;
+	int	last_a;
 
-	max_a = stack_a->max;
-	max_to_top(stack_b);
+	last_a = stack_a->max;
 	rotates = stack_a->size;
+	if (stack_a->top != NULL)
+	{
+		while (stack_b->top != NULL
+			&& *(int *)stack_b->top->content < *(int *)stack_a->top->content)
+			op_pa(stack_a, stack_b);
+	}
 	while (stack_b->top != NULL)
 	{
 		if (stack_a->top != NULL)
 		{
-			while (max_a > *(int *)stack_b->top->content
-				&& rotates > 0)
+			while (last_a > *(int *)stack_b->top->content && rotates > 0)
 			{
 				op_rra(stack_a, 1);
-				max_a = *(int *)ft_lstlast(stack_a->top)->content;
+				last_a = *(int *)ft_lstlast(stack_a->top)->content;
 				rotates--;
 			}
 		}
