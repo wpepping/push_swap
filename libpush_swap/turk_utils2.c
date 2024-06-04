@@ -6,11 +6,11 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:46:08 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/01 18:51:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:00:44 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libpush_swap.h"
 
 void	move_pos(t_list **curr, int *i)
 {

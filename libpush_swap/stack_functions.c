@@ -6,11 +6,11 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:30:17 by wpepping          #+#    #+#             */
-/*   Updated: 2024/05/25 19:09:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:00:48 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libpush_swap.h"
 
 void	ft_stackrotate(t_list **lst)
 {

@@ -6,11 +6,11 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:40:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/02 16:18:20 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:00:42 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libpush_swap.h"
 
 static int	find_pos(t_stack *stack, int nr)
 {
