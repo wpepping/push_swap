@@ -6,7 +6,7 @@
 /*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:50:18 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 19:35:34 by wouter           ###   ########.fr       */
+/*   Updated: 2024/06/05 20:32:34 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	isint(char *str)
 
 static int	err_handler(t_list *list_a, t_list *list_b, char **arr, int *n)
 {
-	ft_putendl_fd("Error", 2);
+	ft_putendl_fd("Error", STDERR_FILENO);
 	if (n != NULL)
 		free(n);
 	if (arr != NULL)
