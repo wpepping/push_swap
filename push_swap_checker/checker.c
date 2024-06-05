@@ -6,13 +6,13 @@
 /*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:50:18 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 20:32:34 by wouter           ###   ########.fr       */
+/*   Updated: 2024/06/05 21:02:30 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	isint(char *str)
+static int	isint(char *str)
 {
 	if (*str == '-')
 		str++;

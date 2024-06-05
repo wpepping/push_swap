@@ -6,13 +6,13 @@
 /*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:35:01 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 19:32:34 by wouter           ###   ########.fr       */
+/*   Updated: 2024/06/05 21:02:36 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isint(char *str)
+static int	isint(char *str)
 {
 	if (*str == '-')
 		str++;
