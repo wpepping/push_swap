@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:50:18 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/04 17:06:59 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:08:25 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ int	isint(char *str)
 	return (1);
 }
 
-static int	errhandl(char *error, t_list *list_a,
-			t_list *list_b, char **arr, int *n)
+static int	err_handler(t_list *list_a, t_list *list_b, char **arr, int *n)
 {
-	write(2, "Error: ", 7);
-	ft_putendl_fd(error, 2);
+	ft_putendl_fd("Error", 2);
 	if (n != NULL)
 		free(n);
 	if (arr != NULL)
 		free_arr((void **)arr);
 	ft_lstclear(&list_a, free);
 	ft_lstclear(&list_b, free);
-	return (1);
+	return (0);
 }
 
 static int	add_numbers(char *str, t_list **list, char **nrs)
@@ -49,20 +47,20 @@ static int	add_numbers(char *str, t_list **list, char **nrs)
 
 	nrs = ft_split(str, ' ');
 	if (nrs == NULL)
-		return (errhandl("out of memory", *list, NULL, NULL, NULL));
+		return (err_handler(*list, NULL, NULL, NULL));
 	n = arrlen((void **)nrs) - 1;
 	while (n >= 0)
 	{
 		new = malloc(sizeof(int));
 		if (new == NULL)
-			return (errhandl("out of memory", *list, NULL, nrs, NULL));
+			return (err_handler(*list, NULL, nrs, NULL));
 		if (!isint(nrs[n]))
-			return (errhandl("non numeric argument", *list, NULL, nrs, NULL));
+			return (err_handler(*list, NULL, nrs, NULL));
 		l = ft_atol(nrs[n--]);
 		if (l > 2147483647 || l < -2147483648)
-			return (errhandl("number out of bounds", *list, NULL, nrs, new));
+			return (err_handler(*list, NULL, nrs, new));
 		if (ft_lstfind(*list, &l, *intcmp))
-			return (errhandl("duplicate number", *list, NULL, nrs, new));
+			return (err_handler(*list, NULL, nrs, new));
 		*new = l;
 		ft_lstadd_front(list, ft_lstnew(new));
 	}
@@ -83,7 +81,6 @@ static int	read_input(int argc, char **argv, t_list **list)
 	return (1);
 }
 
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	t_list	*stck_a;
@@ -99,11 +96,11 @@ int	main(int argc, char **argv)
 	while (n == 0)
 	{
 		if (!do_op(op, &stck_a, &stck_b))
-			return (errhandl("unknown operator", stck_a, stck_b, NULL, NULL));
+			return (err_handler(stck_a, stck_b, NULL, NULL));
 		n = read_op(op, STDIN_FILENO);
 	}
 	if (n == -2)
-		return (errhandl("unknown input format", stck_a, stck_b, NULL, NULL));
+		return (err_handler(stck_a, stck_b, NULL, NULL));
 	else if (checker_is_sorted(stck_a) && stck_b == NULL)
 		ft_putendl_fd("OK", 1);
 	else

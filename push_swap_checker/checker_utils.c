@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:50:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/04 15:59:56 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:52:54 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,34 +73,23 @@ int	do_rotations(char result[4], t_list **stack_a, t_list **stack_b)
 	return (1);
 }
 
-#include <stdio.h>
 int	read_op(char result[4], int fd)
 {
 	char	c;
 	int		bytes_read;
-	static int input_len;
 
 	bytes_read = read(fd, result, 2);
-	input_len += bytes_read;
 	if (bytes_read == 0)
-	{
-		printf("stdin len: %i\n", input_len);
 		return (-1);
-	}
 	else if (bytes_read == 1)
-	{
-		printf("stdin len: %i\n", input_len);
 		return (-2);
-	}
 	bytes_read = read(fd, &c, 1);
-	input_len += bytes_read;
 	if (c == '\n')
 		result[2] = '\0';
 	else
 	{
 		result[2] = c;
 		bytes_read = read(fd, &c, 1);
-		input_len += bytes_read;
 		if (bytes_read == 0 || c != '\n')
 			return (-2);
 		result[3] = '\0';
