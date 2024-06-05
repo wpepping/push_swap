@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:35:01 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/04 16:50:08 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:32:34 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	isint(char *str)
 {
 	if (*str == '-')
 		str++;
-	if (ft_strlen(str) > 10)
+	if (*str == '\0' || ft_strlen(str) > 10)
 		return (0);
 	while (*str)
 	{

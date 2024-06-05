@@ -6,7 +6,7 @@
 /*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:50:18 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 11:08:25 by wouter           ###   ########.fr       */
+/*   Updated: 2024/06/05 19:35:34 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	isint(char *str)
 {
 	if (*str == '-')
 		str++;
-	if (ft_strlen(str) > 10)
+	if (*str == '\0' || ft_strlen(str) > 10)
 		return (0);
 	while (*str)
 	{

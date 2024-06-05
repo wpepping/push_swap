@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:15:23 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/03 16:00:56 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:35:06 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static const char	*read_sign(const char *str, int *sign)
 	return (str);
 }
 
-static int	read_numbers(const char *str)
+static long	read_numbers(const char *str)
 {
 	long	result;
 
@@ -45,5 +45,5 @@ long	ft_atol(const char *nptr)
 	int	sign;
 
 	nptr = read_sign(nptr, &sign);
-	return (sign * read_numbers(nptr));
+	return (read_numbers(nptr) * sign);
 }
