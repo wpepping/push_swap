@@ -11,13 +11,15 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C libft
+$(NAME): $(OBJS) $(LIBFT_FOLDER)/$(LIBFT)
 	cp libft/libft.a ./$(NAME)
 	ar rcs $(NAME) $(OBJS)
 
-objs:
-	cc -c $(CFLAGS) $(SRCS)
+$(LIBFT_FOLDER)/$(LIBFT):
+	$(MAKE) -C $(LIBFT_FOLDER)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	$(MAKE) clean -C $(LIBFT_FOLDER)
