@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:50:18 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 21:02:30 by wouter           ###   ########.fr       */
+/*   Updated: 2024/06/28 16:49:02 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	isint(char *str)
 
 static int	err_handler(t_list *list_a, t_list *list_b, char **arr, int *n)
 {
+	while (read(STDIN_FILENO, NULL, 1))
+		;
 	ft_putendl_fd("Error", STDERR_FILENO);
 	if (n != NULL)
 		free(n);
