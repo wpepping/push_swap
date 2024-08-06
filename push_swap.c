@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:35:01 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/05 21:02:36 by wouter           ###   ########.fr       */
+/*   Updated: 2024/08/06 16:18:38 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	isint(char *str)
+static int	isint(char *str, int *i)
 {
+	long	l;
+	char	*p;
+
+	p = str;
 	if (*str == '-')
 		str++;
 	if (*str == '\0' || ft_strlen(str) > 10)
@@ -24,6 +28,11 @@ static int	isint(char *str)
 			return (0);
 		str++;
 	}
+	l = ft_atol(p);
+	if (l > 2147483647 || l < -2147483648)
+		return (0);
+	if (i != NULL)
+		*i = l;
 	return (1);
 }
 
@@ -43,7 +52,6 @@ static int	add_numbers(char *str, t_list **list, int *max)
 	char	**nrs;
 	int		n;
 	int		*new;
-	long	l;
 
 	nrs = ft_split(str, ' ');
 	if (nrs == NULL)
@@ -52,15 +60,14 @@ static int	add_numbers(char *str, t_list **list, int *max)
 	while (n >= 0)
 	{
 		new = malloc(sizeof(int));
-		if (!isint(nrs[n]) || new == NULL)
+		if (new == NULL || !isint(nrs[n], new))
 			return (read_error(*list, nrs, NULL));
-		l = ft_atol(nrs[n--]);
-		if (l > 2147483647 || l < -2147483648 || ft_lstfind(*list, &l, *intcmp))
+		if (ft_lstfind(*list, new, *intcmp))
 			return (read_error(*list, nrs, new));
-		*new = l;
 		if (*new > *max)
 			*max = *new;
 		ft_lstadd_front(list, ft_lstnew(new));
+		n--;
 	}
 	free_arr((void **)nrs);
 	return (1);
@@ -92,9 +99,7 @@ int	main(int argc, char **argv)
 		return (1);
 	new_stack(&stack_b, NULL, NULL);
 	while (stack_a.size > 3 && !is_sorted(&stack_a))
-	{
 		do_move(&stack_a, &stack_b, find_next_move(&stack_a, &stack_b, &move));
-	}
 	if (stack_a.size == 3)
 		sort_3(&stack_a);
 	else

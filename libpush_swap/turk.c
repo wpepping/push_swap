@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:40:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/06/03 16:00:42 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/08/06 16:08:43 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ static void	check_directions(t_stack *stck_a, t_stack *stck_b, t_move *mv)
 
 t_move	*find_next_move(t_stack *stack_a, t_stack *stack_b, t_move *result)
 {
-	int		min_moves;
 	t_move	curr;
 
 	new_move(&curr, stack_a);
-	min_moves = 2147483647;
+	result->moves = 2147483647;
 	while (curr.pos_a < stack_a->size)
 	{
-		if (curr.pos_a < min_moves || stack_a->size - curr.pos_a < min_moves)
+		if (curr.pos_a < result->moves
+			|| stack_a->size - curr.pos_a < result->moves)
 		{
 			curr.pos_b = find_pos(stack_b, *(int *)curr.node->content);
 			check_directions(stack_a, stack_b, &curr);
-			if (curr.moves < min_moves)
+			if (curr.moves < result->moves)
 			{
-				min_moves = curr.moves;
+				result->moves = curr.moves;
 				copy_move(result, &curr);
 			}
 		}

@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIB_FOLDER)/$(LIB_NAME)
-	cc $(CFLAGS) $(OBJS) -L$(LIB_FOLDER) -l$(LIB_COMPILE) -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(LIB_FOLDER)/$(LIB_NAME) -o $(NAME)
 
 $(LIB_FOLDER)/$(LIB_NAME):
 	$(MAKE) -C $(LIB_FOLDER)
